@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTubeRoulette</title>
+    <style>
+        body {
+            background-color: maroon;
+        }
+        #mainPageBody {
+            background-color: gray;
+            width: 60vw;
+            height: 60vh;
+            margin-left: 20vw;
+            margin-top: 20vh;
+            display: flex;
+            flex-direction: column;
+            border: solid black 3px;
+        }
+        #pageTitle {
+            font-size: 5vh;
+            text-align: center;
+            color: darkred;
+        }
+        #dataBody {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+        }
+        #dataCollectionBody {
+            width: 50%;
+            height: 100%;
+        }
+        #getVideoCriteria {
+            margin-left: 5%;
+            
+        }
+        .inputField {
+            margin-top: 10%;
+            font-size: 2vh;
+            display:grid;
+            grid-template-columns: 50% 50%;
+            grid-gap:5px;
+        }
+        #genre, #timeRange, #ageRating {
+            width: 70%;
+        }
+        #getVideoCriteria label {
+            text-align: right;
+        }
+        #trending {
+            width: 5vh;
+            height: 3vh;
+        }
+        #dataDisplayBody {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+        #searchButton {
+            margin-left: 25%;
+            width: 50%;
+            margin-bottom: 5%;
+            margin-top: 5%;
+            height: 15%;
+            font-size: 2vw;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border-radius: 1vw;
+        }
+        #youTubeEmbed {
+            width: 90%;
+            margin-left: 5%;
+            height: 70%;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainPageBody">
+        <h1 id="pageTitle">YouTube Roulette</h1>
+        <div id="dataBody">
+            <div id="dataCollectionBody">
+                <form id="getVideoCriteria">
+                    <div class="inputField">
+                        <label for="genre">Genre:</label>
+                        <input name="genre" id="genre" type="text" placeholder="Enter Desired Genre">
+                    </div>
+                    <div class="inputField">
+                        <label for="timeRange">Time Range:</label>
+                        <select name="timeRange" id="timeRange">
+                            <option>-Select a Time Range-</option>
+                            <option value="10">0-10 Minutes</option>
+                            <option value="30">10-30 Minutes</option>
+                            <option value="60">30-60 Minutes</option>
+                            <option value="100">60+ Minutes</option>
+                        </select>
+                    </div>
+                    <div class="inputField">
+                        <label for="ageRating">Age Rating:</label>
+                        <select name="ageRating" id="ageRating">
+                            <option>-Select an Age Rating-</option>
+                            <option value="G">G - General Audience</option>
+                            <option value="PG">PG - Parental Guided</option>
+                            <option value="13">PG13 - Parents Strongly Cautioned</option>
+                            <option value="R">R - No One Under 17 Admitted</option>
+                        </select>
+                    </div>
+                    <div class="inputField">
+                        <label for="trending">Should the Video be Trending?:</label>
+                        <input name="trending" id="trending" type="checkbox">
+                    </div>
+                </form>
+            </div>
+            <div id="dataDisplayBody">
+                <input type="button" id="searchButton" value="Feeling Lucky?">
+                <iframe id="youTubeEmbed" src="https://www.youtube.com/embed/hSlb1ezRqfA?si=UeP0MxqMCcLixsta" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <script src="YouTubeRoulette.js"></script>
+</body>
+</html>
