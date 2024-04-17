@@ -1,4 +1,11 @@
 
+window.onload = init;
+
+function init ()
+{
+    document.getElementById("searchButton").addEventListener("click", getVideo);
+}
+
 const apiKey = 'AIzaSyBuZkUa38HhrXa26ZnszYCHVRjouDrZPYc';
 
 async function getVideo() {

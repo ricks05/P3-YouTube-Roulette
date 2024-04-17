@@ -44,13 +44,13 @@
             grid-template-columns: 50% 50%;
             grid-gap:5px;
         }
-        #genre, #timeRange, #ageRating {
+        #genre, #timeRange {
             width: 70%;
         }
         #getVideoCriteria label {
             text-align: right;
         }
-        #trending {
+        #kidFriendly {
             width: 5vh;
             height: 3vh;
         }
@@ -97,18 +97,8 @@
                         </select>
                     </div>
                     <div class="inputField">
-                        <label for="ageRating">Age Rating:</label>
-                        <select name="ageRating" id="ageRating">
-                            <option>-Select an Age Rating-</option>
-                            <option value="G">G - General Audience</option>
-                            <option value="PG">PG - Parental Guided</option>
-                            <option value="13">PG13 - Parents Strongly Cautioned</option>
-                            <option value="R">R - No One Under 17 Admitted</option>
-                        </select>
-                    </div>
-                    <div class="inputField">
-                        <label for="trending">Should the Video be Trending?:</label>
-                        <input name="trending" id="trending" type="checkbox">
+                        <label for="kidFriendly">Kid Friendly?:</label>
+                        <input name="kidFriendly" id="kidFriendly" type="checkbox">
                     </div>
                 </form>
             </div>
@@ -118,6 +108,7 @@
             </div>
         </div>
     </div>
+     <script src="confetti.js"></script> <!-- Got the Confetti from https://github.com/CoderZ90/confetti/blob/main/confetti.js -->
     <script src="YouTubeRoulette.js"></script>
 </body>
 </html>
