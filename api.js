@@ -3,14 +3,17 @@ window.onload = init;
 
 function init ()
 {
-    document.getElementById("searchButton").addEventListener("click", getVideo);
+    document.getElementById("searchButton").addEventListener("click", function(){
+        showConfetti();
+        getVideo();
+    });
 }
 
 const apiKey = 'AIzaSyBuZkUa38HhrXa26ZnszYCHVRjouDrZPYc';
 
 async function getVideo() {
     try {
-        const query = document.getElementById('searchQuery').value;
+        const query = document.getElementById('genre').value;
 
         let url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&type=video&q=${query}&maxResults=3`;
 
@@ -43,4 +46,21 @@ async function refineData(videos) {
         };
     })
     return refinedVideos;
+}
+
+function showConfetti()
+{
+    // Confetti Tutorial from https://dev.to/official_fire/creating-a-confetti-effect-in-5-minutes-16h3
+    const start = () => {
+        setTimeout(function() {
+            confetti.start()
+        }, 1000);
+    };
+    const stop = () => {
+        setTimeout(function() {
+            confetti.stop()
+        }, 5000);
+    };
+    start();
+    stop();
 }
