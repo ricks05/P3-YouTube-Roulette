@@ -1,3 +1,4 @@
+import * as algorithms from './Algorithms.js'
 
 window.onload = init;
 
@@ -24,7 +25,7 @@ async function getVideo() {
         const response = await fetch(url);
         let data = await response.json();
 
-        data = refineData(data.items);
+        data = await refineData(data.items);
 
         let timeRange = document.getElementById('timeRange').value;
         let min = 0;
@@ -52,7 +53,7 @@ async function getVideo() {
 }
 
 async function refineData(videos) {
-    const refinedVideos = videos.map(async video => {
+    const refinedVideos = await Promise.all(videos.map(async video => {
         const url = `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=contentDetails&id=${video.id.videoId}`;
         const response = await fetch(url);
         const videoData = await response.json();
@@ -62,7 +63,7 @@ async function refineData(videos) {
             embeddedUrl: `https://www.youtube.com/embed/${videoData.items[0].id}`,
             duration: convertDuration(videoData.items[0].contentDetails.duration)
         };
-    })
+    }));
     return refinedVideos;
 }
 
