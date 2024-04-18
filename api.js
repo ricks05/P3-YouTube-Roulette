@@ -42,10 +42,14 @@ async function refineData(videos) {
         return {
             title: video.snippet.title,
             embeddedUrl: `https://www.youtube.com/embed/${videoData.items[0].id}`,
-            duration: videoData.items[0].contentDetails.duration
+            duration: convertDuration(videoData.items[0].contentDetails.duration)
         };
     })
     return refinedVideos;
+}
+
+function convertDuration(isoDuration) {
+    return moment.duration(isoDuration).asSeconds();
 }
 
 function showConfetti()
