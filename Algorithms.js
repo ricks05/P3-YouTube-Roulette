@@ -15,7 +15,7 @@ function merge(arr,left,mid,right){
     let j = 0;
     let k = left;
     while (i < n1 && j < n2) {
-        if (X[i] <= Y[j]) {
+        if (X[i].duration <= Y[j].duration) {
             arr[k] = X[i];
             i++;
         }
@@ -52,11 +52,11 @@ function mergeSort(arr,left = 0,right = arr.length - 1){
 
 //QuickSort
 function partition(arr, left, right) {
-    let pivot = arr[right];
+    let pivot = arr[right].duration;
     let i = left - 1;
 
     for (let j = left; j < right; j++) {
-        if (arr[j] <= pivot) {
+        if (arr[j].duration <= pivot) {
             i++;
             [arr[i], arr[j]] = [arr[j], arr[i]];
         }
