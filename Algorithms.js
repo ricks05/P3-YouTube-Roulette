@@ -72,7 +72,7 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
         quickSort(arr, pivotIndex + 1, right);
     }
     let finish = performance.now();
-    return arr;
+    return finish - start;
 }
 //Random Picker
 function randomPicker(videos, min = 0, max){
