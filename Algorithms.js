@@ -76,23 +76,20 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 }
 //Random Picker
 function randomPicker(videos, min = 0, max){
-    let videosInRange = new Map();
+    //[index,duration]
+    let short = [0,Number.MAX_SAFE_INTEGER];
+    let long = [0,0];
     for (let i = 0; i < videos.length; i++) {
-        if (videos[i].duration >= min && videos[i].duration <= max) {
-            videosInRange.set(videos[i].embeddedUrl,videos[i].duration);
+        if(videos[i].duration >= min && videos[i].duration <= max) {
+            if(videos[i].duration >= long[1]){
+                long[0] = i;
+                long[1] = videos[i].duration;
+            }
+            if(videos[i].duration <= short[1]) {
+                short[0] = i;
+                short[1] = videos[i].duration;
+            }
         }
     }
-    const randomIndex = Math.floor(Math.random() * videosInRange.size);
-    let counter = 0;
-    let pickedVideo = "";
-    for (let element of videosInRange) {
-        if (counter === randomIndex) {
-            pickedVideo = element;
-            break;
-        }
-        else {
-            counter++;
-        }
-    }
-    return pickedVideo;
+    return (Math.floor(Math.random() * (long[0]-short[0]) + short[0]));
 }
