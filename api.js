@@ -26,6 +26,24 @@ async function getVideo() {
 
         data = refineData(data.items);
 
+        let timeRange = document.getElementById('timeRange').value;
+        let min = 0;
+        let max = Number.MAX_SAFE_INTEGER;
+        if (timeRange === '0-10') {
+            max = 600;
+        }
+        else if (timeRange === '10-30') {
+            min = 600;
+            max = 1800;
+        }
+        else if (timeRange === '30-60') {
+            min = 1800;
+            max = 3600;
+        }
+        else if (timeRange === '60+') {
+            min = 3600;
+        }
+
         console.log(data);
         
     } catch (error) {
