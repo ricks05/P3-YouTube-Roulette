@@ -72,24 +72,30 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
         quickSort(arr, pivotIndex + 1, right);
     }
     let finish = performance.now();
-    return finish - start;
+    return arr;
 }
 //Random Picker
 function randomPicker(videos, min = 0, max){
-    //[index,duration]
-    let short = [0,Number.MAX_SAFE_INTEGER];
-    let long = [0,0];
+    let short = -1;
+    let long = -1;
     for (let i = 0; i < videos.length; i++) {
-        if(videos[i].duration >= min && videos[i].duration <= max) {
-            if(videos[i].duration >= long[1]){
-                long[0] = i;
-                long[1] = videos[i].duration;
-            }
-            if(videos[i].duration <= short[1]) {
-                short[0] = i;
-                short[1] = videos[i].duration;
-            }
+        if(videos[i].duration >= min){
+            short = i;
+            break;
         }
     }
-    return (Math.floor(Math.random() * (long[0]-short[0]) + short[0]));
+    for (let i = videos.length - 1; i >= 0; i--) {
+        if(videos[i].duration <= max){
+            long = i;
+            break;
+        }
+    }
+
+    if (short == -1 || long == -1) {
+        throw new Error("Invalid duration range")
+    }
+
+    return videos[Math.floor(Math.random()*(long-short+1)+short)];
 }
+
+export {randomPicker, quickSort, mergeSort};
