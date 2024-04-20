@@ -10,13 +10,13 @@ function init ()
     });
 }
 
-const apiKey = 'AIzaSyBuZkUa38HhrXa26ZnszYCHVRjouDrZPYc';
+const apiKey = 'AIzaSyDk8x0qGCO0UKhCUtdZtBK6W3z74WJEV6Y';
 
 async function getVideo() {
     try {
         const query = document.getElementById('genre').value;
 
-        let url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&type=video&q=${query}&maxResults=3`;
+        let url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&type=video&q=${query}&maxResults=50`;
 
         if (document.getElementById('safeSearch').checked) {
             url += "&safeSearch=strict";
@@ -26,26 +26,31 @@ async function getVideo() {
         let data = await response.json();
 
         data = await refineData(data.items);
+        let dataCopy = [...data];
 
         let timeRange = document.getElementById('timeRange').value;
         let min = 0;
         let max = Number.MAX_SAFE_INTEGER;
-        if (timeRange === '0-10') {
-            max = 600;
+        if (timeRange === '0-5') {
+            max = 300;
         }
-        else if (timeRange === '10-30') {
-            min = 600;
+        else if (timeRange === '5-15') {
+            min = 300;
+            max = 900;
+        }
+        else if (timeRange === '15-30') {
+            min = 900;
             max = 1800;
         }
-        else if (timeRange === '30-60') {
+        else if (timeRange === '30+') {
             min = 1800;
-            max = 3600;
-        }
-        else if (timeRange === '60+') {
-            min = 3600;
         }
 
-        console.log(data);
+        const mergeTime = algorithms.mergeSort(data);
+        const quickTime = algorithms.quickSort(dataCopy);
+        
+        const choice = algorithms.randomPicker(data, min, max);
+        console.log(choice);
         
     } catch (error) {
         console.error('Error searching videos:', error);
