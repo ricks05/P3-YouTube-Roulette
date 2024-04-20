@@ -9,8 +9,9 @@ function init ()
         getVideo();
     });
 }
-
-const apiKey = 'AIzaSyDk8x0qGCO0UKhCUtdZtBK6W3z74WJEV6Y';
+// AIzaSyDk8x0qGCO0UKhCUtdZtBK6W3z74WJEV6Y Rick
+// AIzaSyDzvVTx-sOMihGMlY-Ry3SLHqMywbFI1zE Mine
+const apiKey = 'AIzaSyDzvVTx-sOMihGMlY-Ry3SLHqMywbFI1zE';
 
 async function getVideo() {
     try {
@@ -51,9 +52,15 @@ async function getVideo() {
         
         const choice = algorithms.randomPicker(data, min, max);
         console.log(choice);
+
+        document.getElementById("youTubeEmbed").src = choice.embeddedUrl;
+        document.getElementById("quickSortBox").innerHTML = "Quick Sort took " + quickTime + " Milliseconds.";
+        document.getElementById("mergeSortBox").innerHTML = "Merge Sort took " + mergeTime + " Milliseconds.";
         
     } catch (error) {
         console.error('Error searching videos:', error);
+        document.getElementById("youTubeEmbed").src = "images\\errorImage.jpg";
+        document.getElementById("potentialErrorCaption").textContent = "No Video of this Search Found"
     }
 }
 
