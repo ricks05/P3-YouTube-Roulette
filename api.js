@@ -7,6 +7,7 @@ function init ()
     document.getElementById("searchButton").addEventListener("click", function(){
         showConfetti();
         getVideo();
+        document.getElementById("potentialErrorCaption").innerHTML = "";
     });
 }
 // AIzaSyDk8x0qGCO0UKhCUtdZtBK6W3z74WJEV6Y Rick
