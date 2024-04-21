@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTubeRoulette</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
         body {
-            background-color: maroon;
+            background-color: #454545;
+            font-family: "Oswald", sans-serif;
         }
         #mainPageBody {
             background-color: gray;
@@ -16,7 +18,7 @@
             margin-top: 20vh;
             display: flex;
             flex-direction: column;
-            border: solid black 3px;
+            border-radius: 5vh;
         }
         #pageTitle {
             font-size: 5vh;
@@ -37,19 +39,22 @@
             margin-left: 5%; 
         }
         .inputField {
-            margin-top: 5%;
+            margin-top: 4vh;
             font-size: 2vh;
             display:grid;
             grid-template-columns: 50%;
             grid-gap:5px;
             margin-left: 20%;
         }
-        #getVideoCriteria label {
-            font-family: Arial, Helvetica, sans-serif;
-        }
         #safeSearch {
-            width: 5vh;
+            width: 3vh;
             height: 3vh;
+            outline: solid 0.2vw #454545;
+            margin-left: 9.7vw;
+        }
+        #safeSearchContainer {
+            width: 10vw;
+            white-space: nowrap;
         }
         #dataDisplayBody {
             display: flex;
@@ -63,7 +68,7 @@
             margin-top: 5%;
             height: 15%;
             font-size: 2vw;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-family: "Oswald", sans-serif;
             border-radius: 1vw;
         }
         #youTubeEmbed {
@@ -74,15 +79,20 @@
         #potentialErrorCaption {
             margin-left: 1w;
             text-align: center;
+            visibility: hidden;
         }
         #sortTimeTaken {
             margin-left: 3vw;
-            margin-top: 5vh;
+            margin-top: 4vh;
         }
-        #genre, #timeRange {
+        #genre {
             width: 15vw;
-            border: 1px solid darkred;
-            border-radius: 1vw;
+            border: 3px solid #454545;
+            padding: 0.5vw;
+        }
+        #timeRange {
+            width: 16.3vw;
+            border: 3px solid #454545;
             padding: 0.5vw;
         }
     </style>
@@ -95,11 +105,11 @@
             <div id="dataCollectionBody">
                 <form id="getVideoCriteria">
                     <div class="inputField">
-                        <label for="genre">Genre:</label>
+                        <label for="genre">Genre</label>
                         <input name="genre" id="genre" type="text" placeholder="Enter Desired Genre">
                     </div>
                     <div class="inputField">
-                        <label for="timeRange">Time Range:</label>
+                        <label for="timeRange">Duration</label>
                         <select name="timeRange" id="timeRange">
                             <option value="any">-Select a Time Range-</option>
                             <option value="0-5">0-5 Minutes</option>
@@ -109,8 +119,10 @@
                         </select>
                     </div>
                     <div class="inputField">
-                        <label for="safeSearch">Kid Friendly:</label>
-                        <input name="safeSearch" id="safeSearch" type="checkbox">
+                        <div id="safeSearchContainer">
+                            <label for="safeSearch">Kid Friendly</label>
+                            <input name="safeSearch" id="safeSearch" type="checkbox">
+                        </div>
                     </div>
                 </form>
                 <div id="sortTimeTaken">
@@ -119,9 +131,9 @@
                 </div>
             </div>
             <div id="dataDisplayBody">
-                <input type="button" id="searchButton" value="Feeling Lucky?">
                 <iframe id="youTubeEmbed" scrolling="no" src="https://www.youtube.com/embed/MCjlo7PtXMQ?si=S6CiGSGGql4vW52e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <figcaption id="potentialErrorCaption"></figcaption>
+                <figcaption id="potentialErrorCaption">No Video of this Search Found</figcaption>
+                <input type="button" id="searchButton" value="Feeling Lucky?">
             </div>
         </div>
     </div>

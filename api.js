@@ -7,12 +7,11 @@ function init ()
     document.getElementById("searchButton").addEventListener("click", function(){
         showConfetti();
         getVideo();
-        document.getElementById("potentialErrorCaption").innerHTML = "";
+        document.getElementById("potentialErrorCaption").style.visibility = "hidden";
     });
 }
-// AIzaSyDk8x0qGCO0UKhCUtdZtBK6W3z74WJEV6Y Rick
-// AIzaSyDzvVTx-sOMihGMlY-Ry3SLHqMywbFI1zE Mine
-const apiKey = 'AIzaSyDzvVTx-sOMihGMlY-Ry3SLHqMywbFI1zE';
+
+const apiKey = 'AIzaSyDk8x0qGCO0UKhCUtdZtBK6W3z74WJEV6Y';
 
 async function getVideo() {
     try {
@@ -61,7 +60,9 @@ async function getVideo() {
     } catch (error) {
         console.error('Error searching videos:', error);
         document.getElementById("youTubeEmbed").src = "images\\errorImage.jpg";
-        document.getElementById("potentialErrorCaption").textContent = "No Video of this Search Found"
+        document.getElementById("potentialErrorCaption").style.visibility = "visible";
+        document.getElementById("quickSortBox").innerHTML = "Quick Sort took  Milliseconds.";
+        document.getElementById("mergeSortBox").innerHTML = "Merge Sort took  Milliseconds.";
     }
 }
 
