@@ -54,15 +54,13 @@ async function getVideo() {
         console.log(choice);
 
         document.getElementById("youTubeEmbed").src = choice.embeddedUrl;
-        document.getElementById("quickSortBox").innerHTML = "Quick Sort took " + quickTime + " Milliseconds.";
-        document.getElementById("mergeSortBox").innerHTML = "Merge Sort took " + mergeTime + " Milliseconds.";
+        document.getElementById("quickSortBox").innerHTML = "Quick sort took " + quickTime + " ms";
+        document.getElementById("mergeSortBox").innerHTML = "Merge sort took " + mergeTime + " ms";
         
     } catch (error) {
         console.error('Error searching videos:', error);
         document.getElementById("youTubeEmbed").src = "images\\errorImage.jpg";
         document.getElementById("potentialErrorCaption").style.visibility = "visible";
-        document.getElementById("quickSortBox").innerHTML = "Quick Sort took  Milliseconds.";
-        document.getElementById("mergeSortBox").innerHTML = "Merge Sort took  Milliseconds.";
     }
 }
 
