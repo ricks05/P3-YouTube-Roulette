@@ -11,7 +11,7 @@ function init ()
     });
 }
 
-const apiKey = 'AIzaSyDk8x0qGCO0UKhCUtdZtBK6W3z74WJEV6Y';
+const apiKey = 'ENTER API KEY HERE';
 
 async function getVideo() {
     try {
